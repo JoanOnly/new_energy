@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxkj.energy.mapper.user.DriverInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zxkj.energy.pojo.user.DriverInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="driver_doc_no" jdbcType="VARCHAR" property="driverDocNo" />
+    <result column="quasi_driving_type" jdbcType="VARCHAR" property="quasiDrivingType" />
+    <result column="driver_receive_gmt" jdbcType="VARCHAR" property="driverReceiveGmt" />
+    <result column="valid_start_gmt" jdbcType="TIMESTAMP" property="validStartGmt" />
+    <result column="valid_end_gmt" jdbcType="TIMESTAMP" property="validEndGmt" />
+    <result column="valid_term" jdbcType="VARCHAR" property="validTerm" />
+    <result column="issue_organs" jdbcType="VARCHAR" property="issueOrgans" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="writer_name" jdbcType="VARCHAR" property="writerName" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, driver_doc_no, quasi_driving_type, driver_receive_gmt, valid_start_gmt, 
+    valid_end_gmt, valid_term, issue_organs, gmt_create, gmt_modified, writer_name, is_delete, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from driver_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.zxkj.energy.pojo.user.DriverInfo">
+    insert into driver_info (id, user_id, driver_doc_no, 
+      quasi_driving_type, driver_receive_gmt, valid_start_gmt, 
+      valid_end_gmt, valid_term, issue_organs, 
+      gmt_create, gmt_modified, writer_name, 
+      is_delete, remark)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{driverDocNo,jdbcType=VARCHAR}, 
+      #{quasiDrivingType,jdbcType=VARCHAR}, #{driverReceiveGmt,jdbcType=VARCHAR}, #{validStartGmt,jdbcType=TIMESTAMP}, 
+      #{validEndGmt,jdbcType=TIMESTAMP}, #{validTerm,jdbcType=VARCHAR}, #{issueOrgans,jdbcType=VARCHAR}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{writerName,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zxkj.energy.pojo.user.DriverInfo">
+    insert into driver_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="driverDocNo != null">
+        driver_doc_no,
+      </if>
+      <if test="quasiDrivingType != null">
+        quasi_driving_type,
+      </if>
+      <if test="driverReceiveGmt != null">
+        driver_receive_gmt,
+      </if>
+      <if test="validStartGmt != null">
+        valid_start_gmt,
+      </if>
+      <if test="validEndGmt != null">
+        valid_end_gmt,
+      </if>
+      <if test="validTerm != null">
+        valid_term,
+      </if>
+      <if test="issueOrgans != null">
+        issue_organs,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="writerName != null">
+        writer_name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="driverDocNo != null">
+        #{driverDocNo,jdbcType=VARCHAR},
+      </if>
+      <if test="quasiDrivingType != null">
+        #{quasiDrivingType,jdbcType=VARCHAR},
+      </if>
+      <if test="driverReceiveGmt != null">
+        #{driverReceiveGmt,jdbcType=VARCHAR},
+      </if>
+      <if test="validStartGmt != null">
+        #{validStartGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validEndGmt != null">
+        #{validEndGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validTerm != null">
+        #{validTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="issueOrgans != null">
+        #{issueOrgans,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zxkj.energy.pojo.user.DriverInfo">
+    update driver_info
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="driverDocNo != null">
+        driver_doc_no = #{driverDocNo,jdbcType=VARCHAR},
+      </if>
+      <if test="quasiDrivingType != null">
+        quasi_driving_type = #{quasiDrivingType,jdbcType=VARCHAR},
+      </if>
+      <if test="driverReceiveGmt != null">
+        driver_receive_gmt = #{driverReceiveGmt,jdbcType=VARCHAR},
+      </if>
+      <if test="validStartGmt != null">
+        valid_start_gmt = #{validStartGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validEndGmt != null">
+        valid_end_gmt = #{validEndGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validTerm != null">
+        valid_term = #{validTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="issueOrgans != null">
+        issue_organs = #{issueOrgans,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        writer_name = #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zxkj.energy.pojo.user.DriverInfo">
+    update driver_info
+    set user_id = #{userId,jdbcType=BIGINT},
+      driver_doc_no = #{driverDocNo,jdbcType=VARCHAR},
+      quasi_driving_type = #{quasiDrivingType,jdbcType=VARCHAR},
+      driver_receive_gmt = #{driverReceiveGmt,jdbcType=VARCHAR},
+      valid_start_gmt = #{validStartGmt,jdbcType=TIMESTAMP},
+      valid_end_gmt = #{validEndGmt,jdbcType=TIMESTAMP},
+      valid_term = #{validTerm,jdbcType=VARCHAR},
+      issue_organs = #{issueOrgans,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      writer_name = #{writerName,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="userId != null">
+         and user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="driverDocNo != null">
+         and driver_doc_no = #{driverDocNo,jdbcType=VARCHAR}
+      </if>
+      <if test="quasiDrivingType != null">
+         and quasi_driving_type = #{quasiDrivingType,jdbcType=VARCHAR}
+      </if>
+      <if test="driverReceiveGmt != null">
+         and driver_receive_gmt = #{driverReceiveGmt,jdbcType=VARCHAR}
+      </if>
+      <if test="validStartGmt != null">
+         and valid_start_gmt = #{validStartGmt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="validEndGmt != null">
+         and valid_end_gmt = #{validEndGmt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="validTerm != null">
+         and valid_term = #{validTerm,jdbcType=VARCHAR}
+      </if>
+      <if test="issueOrgans != null">
+         and issue_organs = #{issueOrgans,jdbcType=VARCHAR}
+      </if>
+      <if test="gmtCreate != null">
+         and gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="gmtModified != null">
+         and gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      </if>
+      <if test="writerName != null">
+         and writer_name = #{writerName,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+         and is_delete = #{isDelete,jdbcType=TINYINT}
+      </if>
+      <if test="remark != null">
+         and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="list" parameterType="com.zxkj.energy.pojo.user.DriverInfo" resultMap="BaseResultMap">
+    select * from driver_info
+    <include refid="sql_where" />
+  </select>
+  <select id="find" parameterType="com.zxkj.energy.pojo.user.DriverInfo" resultMap="BaseResultMap">
+    select * from driver_info
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteById" parameterType="java.lang.Long">
+     update driver_info set is_delete = true where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insertBatch" parameterType="java.util.List">
+     insert into driver_info ( 
+    <include refid="Base_Column_List" />
+     ) VALUES 
+    <foreach collection="insertList" index="index" item="item" separator=",">
+      (
+      #{item.id},#{item.userId},#{item.driverDocNo},#{item.quasiDrivingType},#{item.driverReceiveGmt},#{item.validStartGmt},#{item.validEndGmt},#{item.validTerm},#{item.issueOrgans},#{item.gmtCreate},#{item.gmtModified},#{item.writerName},#{item.isDelete},#{item.remark}
+      )
+    </foreach>
+  </insert>
+  <update id="updateBatch" parameterType="java.util.List">
+    <foreach close="" collection="updateList" index="index" item="item" open="" separator=";">
+       update driver_info
+      <set>
+        user_id = #{item.userId},driver_doc_no = #{item.driverDocNo},quasi_driving_type = #{item.quasiDrivingType},driver_receive_gmt = #{item.driverReceiveGmt},valid_start_gmt = #{item.validStartGmt},valid_end_gmt = #{item.validEndGmt},valid_term = #{item.validTerm},issue_organs = #{item.issueOrgans},gmt_create = #{item.gmtCreate},gmt_modified = #{item.gmtModified},writer_name = #{item.writerName},is_delete = #{item.isDelete},remark = #{item.remark}
+      </set>
+      where id = #{item.id}
+    </foreach>
+  </update>
+</mapper>

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxkj.energy.mapper.order.OrderCashFlowMapper">
+  <resultMap id="BaseResultMap" type="com.zxkj.energy.pojo.order.OrderCashFlow">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="cash_serial_no" jdbcType="VARCHAR" property="cashSerialNo" />
+    <result column="deal_gmt" jdbcType="TIMESTAMP" property="dealGmt" />
+    <result column="deal_type" jdbcType="INTEGER" property="dealType" />
+    <result column="deal_cost" jdbcType="DECIMAL" property="dealCost" />
+    <result column="deal_method" jdbcType="VARCHAR" property="dealMethod" />
+    <result column="deal_note" jdbcType="VARCHAR" property="dealNote" />
+    <result column="deal_name" jdbcType="VARCHAR" property="dealName" />
+    <result column="deal_bank_no" jdbcType="VARCHAR" property="dealBankNo" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="writer_name" jdbcType="VARCHAR" property="writerName" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_id, order_no, company_id, cash_serial_no, deal_gmt, deal_type, deal_cost, 
+    deal_method, deal_note, deal_name, deal_bank_no, gmt_create, gmt_modified, writer_name, 
+    is_delete, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_cash_flow
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.zxkj.energy.pojo.order.OrderCashFlow">
+    insert into order_cash_flow (id, order_id, order_no, 
+      company_id, cash_serial_no, deal_gmt, 
+      deal_type, deal_cost, deal_method, 
+      deal_note, deal_name, deal_bank_no, 
+      gmt_create, gmt_modified, writer_name, 
+      is_delete, remark)
+    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=BIGINT}, #{cashSerialNo,jdbcType=VARCHAR}, #{dealGmt,jdbcType=TIMESTAMP}, 
+      #{dealType,jdbcType=INTEGER}, #{dealCost,jdbcType=DECIMAL}, #{dealMethod,jdbcType=VARCHAR}, 
+      #{dealNote,jdbcType=VARCHAR}, #{dealName,jdbcType=VARCHAR}, #{dealBankNo,jdbcType=VARCHAR}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{writerName,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zxkj.energy.pojo.order.OrderCashFlow">
+    insert into order_cash_flow
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="cashSerialNo != null">
+        cash_serial_no,
+      </if>
+      <if test="dealGmt != null">
+        deal_gmt,
+      </if>
+      <if test="dealType != null">
+        deal_type,
+      </if>
+      <if test="dealCost != null">
+        deal_cost,
+      </if>
+      <if test="dealMethod != null">
+        deal_method,
+      </if>
+      <if test="dealNote != null">
+        deal_note,
+      </if>
+      <if test="dealName != null">
+        deal_name,
+      </if>
+      <if test="dealBankNo != null">
+        deal_bank_no,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="writerName != null">
+        writer_name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="cashSerialNo != null">
+        #{cashSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="dealGmt != null">
+        #{dealGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealType != null">
+        #{dealType,jdbcType=INTEGER},
+      </if>
+      <if test="dealCost != null">
+        #{dealCost,jdbcType=DECIMAL},
+      </if>
+      <if test="dealMethod != null">
+        #{dealMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="dealNote != null">
+        #{dealNote,jdbcType=VARCHAR},
+      </if>
+      <if test="dealName != null">
+        #{dealName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealBankNo != null">
+        #{dealBankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zxkj.energy.pojo.order.OrderCashFlow">
+    update order_cash_flow
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="cashSerialNo != null">
+        cash_serial_no = #{cashSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="dealGmt != null">
+        deal_gmt = #{dealGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealType != null">
+        deal_type = #{dealType,jdbcType=INTEGER},
+      </if>
+      <if test="dealCost != null">
+        deal_cost = #{dealCost,jdbcType=DECIMAL},
+      </if>
+      <if test="dealMethod != null">
+        deal_method = #{dealMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="dealNote != null">
+        deal_note = #{dealNote,jdbcType=VARCHAR},
+      </if>
+      <if test="dealName != null">
+        deal_name = #{dealName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealBankNo != null">
+        deal_bank_no = #{dealBankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        writer_name = #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zxkj.energy.pojo.order.OrderCashFlow">
+    update order_cash_flow
+    set order_id = #{orderId,jdbcType=BIGINT},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=BIGINT},
+      cash_serial_no = #{cashSerialNo,jdbcType=VARCHAR},
+      deal_gmt = #{dealGmt,jdbcType=TIMESTAMP},
+      deal_type = #{dealType,jdbcType=INTEGER},
+      deal_cost = #{dealCost,jdbcType=DECIMAL},
+      deal_method = #{dealMethod,jdbcType=VARCHAR},
+      deal_note = #{dealNote,jdbcType=VARCHAR},
+      deal_name = #{dealName,jdbcType=VARCHAR},
+      deal_bank_no = #{dealBankNo,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      writer_name = #{writerName,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="orderId != null">
+         and order_id = #{orderId,jdbcType=BIGINT}
+      </if>
+      <if test="orderNo != null">
+         and order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="companyId != null">
+         and company_id = #{companyId,jdbcType=BIGINT}
+      </if>
+      <if test="cashSerialNo != null">
+         and cash_serial_no = #{cashSerialNo,jdbcType=VARCHAR}
+      </if>
+      <if test="dealGmt != null">
+         and deal_gmt = #{dealGmt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="dealType != null">
+         and deal_type = #{dealType,jdbcType=INTEGER}
+      </if>
+      <if test="dealCost != null">
+         and deal_cost = #{dealCost,jdbcType=DECIMAL}
+      </if>
+      <if test="dealMethod != null">
+         and deal_method = #{dealMethod,jdbcType=VARCHAR}
+      </if>
+      <if test="dealNote != null">
+         and deal_note = #{dealNote,jdbcType=VARCHAR}
+      </if>
+      <if test="dealName != null">
+         and deal_name = #{dealName,jdbcType=VARCHAR}
+      </if>
+      <if test="dealBankNo != null">
+         and deal_bank_no = #{dealBankNo,jdbcType=VARCHAR}
+      </if>
+      <if test="gmtCreate != null">
+         and gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="gmtModified != null">
+         and gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      </if>
+      <if test="writerName != null">
+         and writer_name = #{writerName,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+         and is_delete = #{isDelete,jdbcType=TINYINT}
+      </if>
+      <if test="remark != null">
+         and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="list" parameterType="com.zxkj.energy.pojo.order.OrderCashFlow" resultMap="BaseResultMap">
+    select * from order_cash_flow
+    <include refid="sql_where" />
+  </select>
+  <select id="find" parameterType="com.zxkj.energy.pojo.order.OrderCashFlow" resultMap="BaseResultMap">
+    select * from order_cash_flow
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteById" parameterType="java.lang.Long">
+     update order_cash_flow set is_delete = true where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insertBatch" parameterType="java.util.List">
+     insert into order_cash_flow ( 
+    <include refid="Base_Column_List" />
+     ) VALUES 
+    <foreach collection="insertList" index="index" item="item" separator=",">
+      (
+      #{item.id},#{item.orderId},#{item.orderNo},#{item.companyId},#{item.cashSerialNo},#{item.dealGmt},#{item.dealType},#{item.dealCost},#{item.dealMethod},#{item.dealNote},#{item.dealName},#{item.dealBankNo},#{item.gmtCreate},#{item.gmtModified},#{item.writerName},#{item.isDelete},#{item.remark}
+      )
+    </foreach>
+  </insert>
+  <update id="updateBatch" parameterType="java.util.List">
+    <foreach close="" collection="updateList" index="index" item="item" open="" separator=";">
+       update order_cash_flow
+      <set>
+        order_id = #{item.orderId},order_no = #{item.orderNo},company_id = #{item.companyId},cash_serial_no = #{item.cashSerialNo},deal_gmt = #{item.dealGmt},deal_type = #{item.dealType},deal_cost = #{item.dealCost},deal_method = #{item.dealMethod},deal_note = #{item.dealNote},deal_name = #{item.dealName},deal_bank_no = #{item.dealBankNo},gmt_create = #{item.gmtCreate},gmt_modified = #{item.gmtModified},writer_name = #{item.writerName},is_delete = #{item.isDelete},remark = #{item.remark}
+      </set>
+      where id = #{item.id}
+    </foreach>
+  </update>
+</mapper>

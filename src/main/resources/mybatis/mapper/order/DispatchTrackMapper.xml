@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxkj.energy.mapper.order.DispatchTrackMapper">
+  <resultMap id="BaseResultMap" type="com.zxkj.energy.pojo.order.DispatchTrack">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="dispatch_id" jdbcType="BIGINT" property="dispatchId" />
+    <result column="dispatch_serial_no" jdbcType="VARCHAR" property="dispatchSerialNo" />
+    <result column="trans_status" jdbcType="INTEGER" property="transStatus" />
+    <result column="record_gmt" jdbcType="TIMESTAMP" property="recordGmt" />
+    <result column="operator_id" jdbcType="BIGINT" property="operatorId" />
+    <result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+    <result column="operator_note" jdbcType="VARCHAR" property="operatorNote" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="writer_name" jdbcType="VARCHAR" property="writerName" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, company_id, order_id, order_no, dispatch_id, dispatch_serial_no, trans_status, 
+    record_gmt, operator_id, operator_name, operator_note, gmt_create, gmt_modified, 
+    writer_name, is_delete, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dispatch_track
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.zxkj.energy.pojo.order.DispatchTrack">
+    insert into dispatch_track (id, company_id, order_id, 
+      order_no, dispatch_id, dispatch_serial_no, 
+      trans_status, record_gmt, operator_id, 
+      operator_name, operator_note, gmt_create, 
+      gmt_modified, writer_name, is_delete, 
+      remark)
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
+      #{orderNo,jdbcType=VARCHAR}, #{dispatchId,jdbcType=BIGINT}, #{dispatchSerialNo,jdbcType=VARCHAR}, 
+      #{transStatus,jdbcType=INTEGER}, #{recordGmt,jdbcType=TIMESTAMP}, #{operatorId,jdbcType=BIGINT}, 
+      #{operatorName,jdbcType=VARCHAR}, #{operatorNote,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{writerName,jdbcType=VARCHAR}, #{isDelete,jdbcType=TINYINT}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zxkj.energy.pojo.order.DispatchTrack">
+    insert into dispatch_track
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="dispatchId != null">
+        dispatch_id,
+      </if>
+      <if test="dispatchSerialNo != null">
+        dispatch_serial_no,
+      </if>
+      <if test="transStatus != null">
+        trans_status,
+      </if>
+      <if test="recordGmt != null">
+        record_gmt,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
+      </if>
+      <if test="operatorName != null">
+        operator_name,
+      </if>
+      <if test="operatorNote != null">
+        operator_note,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="writerName != null">
+        writer_name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchId != null">
+        #{dispatchId,jdbcType=BIGINT},
+      </if>
+      <if test="dispatchSerialNo != null">
+        #{dispatchSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transStatus != null">
+        #{transStatus,jdbcType=INTEGER},
+      </if>
+      <if test="recordGmt != null">
+        #{recordGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorNote != null">
+        #{operatorNote,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zxkj.energy.pojo.order.DispatchTrack">
+    update dispatch_track
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchId != null">
+        dispatch_id = #{dispatchId,jdbcType=BIGINT},
+      </if>
+      <if test="dispatchSerialNo != null">
+        dispatch_serial_no = #{dispatchSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transStatus != null">
+        trans_status = #{transStatus,jdbcType=INTEGER},
+      </if>
+      <if test="recordGmt != null">
+        record_gmt = #{recordGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorName != null">
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorNote != null">
+        operator_note = #{operatorNote,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        writer_name = #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zxkj.energy.pojo.order.DispatchTrack">
+    update dispatch_track
+    set company_id = #{companyId,jdbcType=BIGINT},
+      order_id = #{orderId,jdbcType=BIGINT},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      dispatch_id = #{dispatchId,jdbcType=BIGINT},
+      dispatch_serial_no = #{dispatchSerialNo,jdbcType=VARCHAR},
+      trans_status = #{transStatus,jdbcType=INTEGER},
+      record_gmt = #{recordGmt,jdbcType=TIMESTAMP},
+      operator_id = #{operatorId,jdbcType=BIGINT},
+      operator_name = #{operatorName,jdbcType=VARCHAR},
+      operator_note = #{operatorNote,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      writer_name = #{writerName,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="companyId != null">
+         and company_id = #{companyId,jdbcType=BIGINT}
+      </if>
+      <if test="orderId != null">
+         and order_id = #{orderId,jdbcType=BIGINT}
+      </if>
+      <if test="orderNo != null">
+         and order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="dispatchId != null">
+         and dispatch_id = #{dispatchId,jdbcType=BIGINT}
+      </if>
+      <if test="dispatchSerialNo != null">
+         and dispatch_serial_no = #{dispatchSerialNo,jdbcType=VARCHAR}
+      </if>
+      <if test="transStatus != null">
+         and trans_status = #{transStatus,jdbcType=INTEGER}
+      </if>
+      <if test="recordGmt != null">
+         and record_gmt = #{recordGmt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operatorId != null">
+         and operator_id = #{operatorId,jdbcType=BIGINT}
+      </if>
+      <if test="operatorName != null">
+         and operator_name = #{operatorName,jdbcType=VARCHAR}
+      </if>
+      <if test="operatorNote != null">
+         and operator_note = #{operatorNote,jdbcType=VARCHAR}
+      </if>
+      <if test="gmtCreate != null">
+         and gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="gmtModified != null">
+         and gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      </if>
+      <if test="writerName != null">
+         and writer_name = #{writerName,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+         and is_delete = #{isDelete,jdbcType=TINYINT}
+      </if>
+      <if test="remark != null">
+         and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="list" parameterType="com.zxkj.energy.pojo.order.DispatchTrack" resultMap="BaseResultMap">
+    select * from dispatch_track
+    <include refid="sql_where" />
+  </select>
+  <select id="find" parameterType="com.zxkj.energy.pojo.order.DispatchTrack" resultMap="BaseResultMap">
+    select * from dispatch_track
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteById" parameterType="java.lang.Long">
+     update dispatch_track set is_delete = true where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insertBatch" parameterType="java.util.List">
+     insert into dispatch_track ( 
+    <include refid="Base_Column_List" />
+     ) VALUES 
+    <foreach collection="insertList" index="index" item="item" separator=",">
+      (
+      #{item.id},#{item.companyId},#{item.orderId},#{item.orderNo},#{item.dispatchId},#{item.dispatchSerialNo},#{item.transStatus},#{item.recordGmt},#{item.operatorId},#{item.operatorName},#{item.operatorNote},#{item.gmtCreate},#{item.gmtModified},#{item.writerName},#{item.isDelete},#{item.remark}
+      )
+    </foreach>
+  </insert>
+  <update id="updateBatch" parameterType="java.util.List">
+    <foreach close="" collection="updateList" index="index" item="item" open="" separator=";">
+       update dispatch_track
+      <set>
+        company_id = #{item.companyId},order_id = #{item.orderId},order_no = #{item.orderNo},dispatch_id = #{item.dispatchId},dispatch_serial_no = #{item.dispatchSerialNo},trans_status = #{item.transStatus},record_gmt = #{item.recordGmt},operator_id = #{item.operatorId},operator_name = #{item.operatorName},operator_note = #{item.operatorNote},gmt_create = #{item.gmtCreate},gmt_modified = #{item.gmtModified},writer_name = #{item.writerName},is_delete = #{item.isDelete},remark = #{item.remark}
+      </set>
+      where id = #{item.id}
+    </foreach>
+  </update>
+</mapper>

@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxkj.energy.mapper.order.DispatchInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zxkj.energy.pojo.order.DispatchInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="dispatch_serial_no" jdbcType="VARCHAR" property="dispatchSerialNo" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="driver_user_id" jdbcType="BIGINT" property="driverUserId" />
+    <result column="driver_name" jdbcType="VARCHAR" property="driverName" />
+    <result column="driver_phone" jdbcType="VARCHAR" property="driverPhone" />
+    <result column="car_id" jdbcType="BIGINT" property="carId" />
+    <result column="car_number" jdbcType="VARCHAR" property="carNumber" />
+    <result column="dispatch_user_id" jdbcType="BIGINT" property="dispatchUserId" />
+    <result column="dispatch_name" jdbcType="VARCHAR" property="dispatchName" />
+    <result column="dispatch_phone" jdbcType="VARCHAR" property="dispatchPhone" />
+    <result column="dispatch_gmt" jdbcType="TIMESTAMP" property="dispatchGmt" />
+    <result column="dispatch_status" jdbcType="INTEGER" property="dispatchStatus" />
+    <result column="get_goods_gmt" jdbcType="TIMESTAMP" property="getGoodsGmt" />
+    <result column="trans_goos_weight" jdbcType="VARCHAR" property="transGoosWeight" />
+    <result column="receive_no" jdbcType="VARCHAR" property="receiveNo" />
+    <result column="receive_gmt" jdbcType="VARCHAR" property="receiveGmt" />
+    <result column="receive_name" jdbcType="VARCHAR" property="receiveName" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="writer_name" jdbcType="VARCHAR" property="writerName" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_id, order_no, dispatch_serial_no, company_id, company_name, driver_user_id, 
+    driver_name, driver_phone, car_id, car_number, dispatch_user_id, dispatch_name, dispatch_phone, 
+    dispatch_gmt, dispatch_status, get_goods_gmt, trans_goos_weight, receive_no, receive_gmt, 
+    receive_name, gmt_create, gmt_modified, writer_name, is_delete, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dispatch_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.zxkj.energy.pojo.order.DispatchInfo">
+    insert into dispatch_info (id, order_id, order_no, 
+      dispatch_serial_no, company_id, company_name, 
+      driver_user_id, driver_name, driver_phone, 
+      car_id, car_number, dispatch_user_id, 
+      dispatch_name, dispatch_phone, dispatch_gmt, 
+      dispatch_status, get_goods_gmt, trans_goos_weight, 
+      receive_no, receive_gmt, receive_name, 
+      gmt_create, gmt_modified, writer_name, 
+      is_delete, remark)
+    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, 
+      #{dispatchSerialNo,jdbcType=VARCHAR}, #{companyId,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, 
+      #{driverUserId,jdbcType=BIGINT}, #{driverName,jdbcType=VARCHAR}, #{driverPhone,jdbcType=VARCHAR}, 
+      #{carId,jdbcType=BIGINT}, #{carNumber,jdbcType=VARCHAR}, #{dispatchUserId,jdbcType=BIGINT}, 
+      #{dispatchName,jdbcType=VARCHAR}, #{dispatchPhone,jdbcType=VARCHAR}, #{dispatchGmt,jdbcType=TIMESTAMP}, 
+      #{dispatchStatus,jdbcType=INTEGER}, #{getGoodsGmt,jdbcType=TIMESTAMP}, #{transGoosWeight,jdbcType=VARCHAR}, 
+      #{receiveNo,jdbcType=VARCHAR}, #{receiveGmt,jdbcType=VARCHAR}, #{receiveName,jdbcType=VARCHAR}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{writerName,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zxkj.energy.pojo.order.DispatchInfo">
+    insert into dispatch_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="dispatchSerialNo != null">
+        dispatch_serial_no,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="driverUserId != null">
+        driver_user_id,
+      </if>
+      <if test="driverName != null">
+        driver_name,
+      </if>
+      <if test="driverPhone != null">
+        driver_phone,
+      </if>
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="carNumber != null">
+        car_number,
+      </if>
+      <if test="dispatchUserId != null">
+        dispatch_user_id,
+      </if>
+      <if test="dispatchName != null">
+        dispatch_name,
+      </if>
+      <if test="dispatchPhone != null">
+        dispatch_phone,
+      </if>
+      <if test="dispatchGmt != null">
+        dispatch_gmt,
+      </if>
+      <if test="dispatchStatus != null">
+        dispatch_status,
+      </if>
+      <if test="getGoodsGmt != null">
+        get_goods_gmt,
+      </if>
+      <if test="transGoosWeight != null">
+        trans_goos_weight,
+      </if>
+      <if test="receiveNo != null">
+        receive_no,
+      </if>
+      <if test="receiveGmt != null">
+        receive_gmt,
+      </if>
+      <if test="receiveName != null">
+        receive_name,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="writerName != null">
+        writer_name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchSerialNo != null">
+        #{dispatchSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverUserId != null">
+        #{driverUserId,jdbcType=BIGINT},
+      </if>
+      <if test="driverName != null">
+        #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhone != null">
+        #{driverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carId != null">
+        #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="carNumber != null">
+        #{carNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchUserId != null">
+        #{dispatchUserId,jdbcType=BIGINT},
+      </if>
+      <if test="dispatchName != null">
+        #{dispatchName,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchPhone != null">
+        #{dispatchPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchGmt != null">
+        #{dispatchGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dispatchStatus != null">
+        #{dispatchStatus,jdbcType=INTEGER},
+      </if>
+      <if test="getGoodsGmt != null">
+        #{getGoodsGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transGoosWeight != null">
+        #{transGoosWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveNo != null">
+        #{receiveNo,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveGmt != null">
+        #{receiveGmt,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveName != null">
+        #{receiveName,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zxkj.energy.pojo.order.DispatchInfo">
+    update dispatch_info
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchSerialNo != null">
+        dispatch_serial_no = #{dispatchSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverUserId != null">
+        driver_user_id = #{driverUserId,jdbcType=BIGINT},
+      </if>
+      <if test="driverName != null">
+        driver_name = #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhone != null">
+        driver_phone = #{driverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carId != null">
+        car_id = #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="carNumber != null">
+        car_number = #{carNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchUserId != null">
+        dispatch_user_id = #{dispatchUserId,jdbcType=BIGINT},
+      </if>
+      <if test="dispatchName != null">
+        dispatch_name = #{dispatchName,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchPhone != null">
+        dispatch_phone = #{dispatchPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchGmt != null">
+        dispatch_gmt = #{dispatchGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dispatchStatus != null">
+        dispatch_status = #{dispatchStatus,jdbcType=INTEGER},
+      </if>
+      <if test="getGoodsGmt != null">
+        get_goods_gmt = #{getGoodsGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transGoosWeight != null">
+        trans_goos_weight = #{transGoosWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveNo != null">
+        receive_no = #{receiveNo,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveGmt != null">
+        receive_gmt = #{receiveGmt,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveName != null">
+        receive_name = #{receiveName,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        writer_name = #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zxkj.energy.pojo.order.DispatchInfo">
+    update dispatch_info
+    set order_id = #{orderId,jdbcType=BIGINT},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      dispatch_serial_no = #{dispatchSerialNo,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=BIGINT},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      driver_user_id = #{driverUserId,jdbcType=BIGINT},
+      driver_name = #{driverName,jdbcType=VARCHAR},
+      driver_phone = #{driverPhone,jdbcType=VARCHAR},
+      car_id = #{carId,jdbcType=BIGINT},
+      car_number = #{carNumber,jdbcType=VARCHAR},
+      dispatch_user_id = #{dispatchUserId,jdbcType=BIGINT},
+      dispatch_name = #{dispatchName,jdbcType=VARCHAR},
+      dispatch_phone = #{dispatchPhone,jdbcType=VARCHAR},
+      dispatch_gmt = #{dispatchGmt,jdbcType=TIMESTAMP},
+      dispatch_status = #{dispatchStatus,jdbcType=INTEGER},
+      get_goods_gmt = #{getGoodsGmt,jdbcType=TIMESTAMP},
+      trans_goos_weight = #{transGoosWeight,jdbcType=VARCHAR},
+      receive_no = #{receiveNo,jdbcType=VARCHAR},
+      receive_gmt = #{receiveGmt,jdbcType=VARCHAR},
+      receive_name = #{receiveName,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      writer_name = #{writerName,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="orderId != null">
+         and order_id = #{orderId,jdbcType=BIGINT}
+      </if>
+      <if test="orderNo != null">
+         and order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="dispatchSerialNo != null">
+         and dispatch_serial_no = #{dispatchSerialNo,jdbcType=VARCHAR}
+      </if>
+      <if test="companyId != null">
+         and company_id = #{companyId,jdbcType=BIGINT}
+      </if>
+      <if test="companyName != null">
+         and company_name = #{companyName,jdbcType=VARCHAR}
+      </if>
+      <if test="driverUserId != null">
+         and driver_user_id = #{driverUserId,jdbcType=BIGINT}
+      </if>
+      <if test="driverName != null">
+         and driver_name = #{driverName,jdbcType=VARCHAR}
+      </if>
+      <if test="driverPhone != null">
+         and driver_phone = #{driverPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="carId != null">
+         and car_id = #{carId,jdbcType=BIGINT}
+      </if>
+      <if test="carNumber != null">
+         and car_number = #{carNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="dispatchUserId != null">
+         and dispatch_user_id = #{dispatchUserId,jdbcType=BIGINT}
+      </if>
+      <if test="dispatchName != null">
+         and dispatch_name = #{dispatchName,jdbcType=VARCHAR}
+      </if>
+      <if test="dispatchPhone != null">
+         and dispatch_phone = #{dispatchPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="dispatchGmt != null">
+         and dispatch_gmt = #{dispatchGmt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="dispatchStatus != null">
+         and dispatch_status = #{dispatchStatus,jdbcType=INTEGER}
+      </if>
+      <if test="getGoodsGmt != null">
+         and get_goods_gmt = #{getGoodsGmt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="transGoosWeight != null">
+         and trans_goos_weight = #{transGoosWeight,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveNo != null">
+         and receive_no = #{receiveNo,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveGmt != null">
+         and receive_gmt = #{receiveGmt,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveName != null">
+         and receive_name = #{receiveName,jdbcType=VARCHAR}
+      </if>
+      <if test="gmtCreate != null">
+         and gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="gmtModified != null">
+         and gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      </if>
+      <if test="writerName != null">
+         and writer_name = #{writerName,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+         and is_delete = #{isDelete,jdbcType=TINYINT}
+      </if>
+      <if test="remark != null">
+         and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="list" parameterType="com.zxkj.energy.pojo.order.DispatchInfo" resultMap="BaseResultMap">
+    select * from dispatch_info
+    <include refid="sql_where" />
+  </select>
+  <select id="find" parameterType="com.zxkj.energy.pojo.order.DispatchInfo" resultMap="BaseResultMap">
+    select * from dispatch_info
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteById" parameterType="java.lang.Long">
+     update dispatch_info set is_delete = true where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insertBatch" parameterType="java.util.List">
+     insert into dispatch_info ( 
+    <include refid="Base_Column_List" />
+     ) VALUES 
+    <foreach collection="insertList" index="index" item="item" separator=",">
+      (
+      #{item.id},#{item.orderId},#{item.orderNo},#{item.dispatchSerialNo},#{item.companyId},#{item.companyName},#{item.driverUserId},#{item.driverName},#{item.driverPhone},#{item.carId},#{item.carNumber},#{item.dispatchUserId},#{item.dispatchName},#{item.dispatchPhone},#{item.dispatchGmt},#{item.dispatchStatus},#{item.getGoodsGmt},#{item.transGoosWeight},#{item.receiveNo},#{item.receiveGmt},#{item.receiveName},#{item.gmtCreate},#{item.gmtModified},#{item.writerName},#{item.isDelete},#{item.remark}
+      )
+    </foreach>
+  </insert>
+  <update id="updateBatch" parameterType="java.util.List">
+    <foreach close="" collection="updateList" index="index" item="item" open="" separator=";">
+       update dispatch_info
+      <set>
+        order_id = #{item.orderId},order_no = #{item.orderNo},dispatch_serial_no = #{item.dispatchSerialNo},company_id = #{item.companyId},company_name = #{item.companyName},driver_user_id = #{item.driverUserId},driver_name = #{item.driverName},driver_phone = #{item.driverPhone},car_id = #{item.carId},car_number = #{item.carNumber},dispatch_user_id = #{item.dispatchUserId},dispatch_name = #{item.dispatchName},dispatch_phone = #{item.dispatchPhone},dispatch_gmt = #{item.dispatchGmt},dispatch_status = #{item.dispatchStatus},get_goods_gmt = #{item.getGoodsGmt},trans_goos_weight = #{item.transGoosWeight},receive_no = #{item.receiveNo},receive_gmt = #{item.receiveGmt},receive_name = #{item.receiveName},gmt_create = #{item.gmtCreate},gmt_modified = #{item.gmtModified},writer_name = #{item.writerName},is_delete = #{item.isDelete},remark = #{item.remark}
+      </set>
+      where id = #{item.id}
+    </foreach>
+  </update>
+</mapper>

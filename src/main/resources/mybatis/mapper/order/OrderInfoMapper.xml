@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxkj.energy.mapper.order.OrderInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zxkj.energy.pojo.order.OrderInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="order_gmt" jdbcType="TIMESTAMP" property="orderGmt" />
+    <result column="arrive_gmt" jdbcType="TIMESTAMP" property="arriveGmt" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_type" jdbcType="INTEGER" property="goodsType" />
+    <result column="goods_weight" jdbcType="VARCHAR" property="goodsWeight" />
+    <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
+    <result column="send_user_id" jdbcType="BIGINT" property="sendUserId" />
+    <result column="send_company_id" jdbcType="BIGINT" property="sendCompanyId" />
+    <result column="send_user_name" jdbcType="VARCHAR" property="sendUserName" />
+    <result column="send_user_phone" jdbcType="VARCHAR" property="sendUserPhone" />
+    <result column="send_province" jdbcType="VARCHAR" property="sendProvince" />
+    <result column="send_city" jdbcType="VARCHAR" property="sendCity" />
+    <result column="send_area" jdbcType="VARCHAR" property="sendArea" />
+    <result column="send_detail" jdbcType="VARCHAR" property="sendDetail" />
+    <result column="receive_user_id" jdbcType="BIGINT" property="receiveUserId" />
+    <result column="receive_company_id" jdbcType="BIGINT" property="receiveCompanyId" />
+    <result column="receive_user_name" jdbcType="VARCHAR" property="receiveUserName" />
+    <result column="receive_user_phone" jdbcType="VARCHAR" property="receiveUserPhone" />
+    <result column="receive_province" jdbcType="VARCHAR" property="receiveProvince" />
+    <result column="receive_city" jdbcType="VARCHAR" property="receiveCity" />
+    <result column="receive_area" jdbcType="VARCHAR" property="receiveArea" />
+    <result column="receive_detail" jdbcType="VARCHAR" property="receiveDetail" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="writer_name" jdbcType="VARCHAR" property="writerName" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, company_id, order_gmt, arrive_gmt, goods_name, goods_type, goods_weight, 
+    order_status, send_user_id, send_company_id, send_user_name, send_user_phone, send_province, 
+    send_city, send_area, send_detail, receive_user_id, receive_company_id, receive_user_name, 
+    receive_user_phone, receive_province, receive_city, receive_area, receive_detail, 
+    gmt_create, gmt_modified, writer_name, is_delete, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.zxkj.energy.pojo.order.OrderInfo">
+    insert into order_info (id, order_no, company_id, 
+      order_gmt, arrive_gmt, goods_name, 
+      goods_type, goods_weight, order_status, 
+      send_user_id, send_company_id, send_user_name, 
+      send_user_phone, send_province, send_city, 
+      send_area, send_detail, receive_user_id, 
+      receive_company_id, receive_user_name, receive_user_phone, 
+      receive_province, receive_city, receive_area, 
+      receive_detail, gmt_create, gmt_modified, 
+      writer_name, is_delete, remark
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{companyId,jdbcType=BIGINT}, 
+      #{orderGmt,jdbcType=TIMESTAMP}, #{arriveGmt,jdbcType=TIMESTAMP}, #{goodsName,jdbcType=VARCHAR}, 
+      #{goodsType,jdbcType=INTEGER}, #{goodsWeight,jdbcType=VARCHAR}, #{orderStatus,jdbcType=INTEGER}, 
+      #{sendUserId,jdbcType=BIGINT}, #{sendCompanyId,jdbcType=BIGINT}, #{sendUserName,jdbcType=VARCHAR}, 
+      #{sendUserPhone,jdbcType=VARCHAR}, #{sendProvince,jdbcType=VARCHAR}, #{sendCity,jdbcType=VARCHAR}, 
+      #{sendArea,jdbcType=VARCHAR}, #{sendDetail,jdbcType=VARCHAR}, #{receiveUserId,jdbcType=BIGINT}, 
+      #{receiveCompanyId,jdbcType=BIGINT}, #{receiveUserName,jdbcType=VARCHAR}, #{receiveUserPhone,jdbcType=VARCHAR}, 
+      #{receiveProvince,jdbcType=VARCHAR}, #{receiveCity,jdbcType=VARCHAR}, #{receiveArea,jdbcType=VARCHAR}, 
+      #{receiveDetail,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{writerName,jdbcType=VARCHAR}, #{isDelete,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zxkj.energy.pojo.order.OrderInfo">
+    insert into order_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="orderGmt != null">
+        order_gmt,
+      </if>
+      <if test="arriveGmt != null">
+        arrive_gmt,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsType != null">
+        goods_type,
+      </if>
+      <if test="goodsWeight != null">
+        goods_weight,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="sendUserId != null">
+        send_user_id,
+      </if>
+      <if test="sendCompanyId != null">
+        send_company_id,
+      </if>
+      <if test="sendUserName != null">
+        send_user_name,
+      </if>
+      <if test="sendUserPhone != null">
+        send_user_phone,
+      </if>
+      <if test="sendProvince != null">
+        send_province,
+      </if>
+      <if test="sendCity != null">
+        send_city,
+      </if>
+      <if test="sendArea != null">
+        send_area,
+      </if>
+      <if test="sendDetail != null">
+        send_detail,
+      </if>
+      <if test="receiveUserId != null">
+        receive_user_id,
+      </if>
+      <if test="receiveCompanyId != null">
+        receive_company_id,
+      </if>
+      <if test="receiveUserName != null">
+        receive_user_name,
+      </if>
+      <if test="receiveUserPhone != null">
+        receive_user_phone,
+      </if>
+      <if test="receiveProvince != null">
+        receive_province,
+      </if>
+      <if test="receiveCity != null">
+        receive_city,
+      </if>
+      <if test="receiveArea != null">
+        receive_area,
+      </if>
+      <if test="receiveDetail != null">
+        receive_detail,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="writerName != null">
+        writer_name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="orderGmt != null">
+        #{orderGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arriveGmt != null">
+        #{arriveGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null">
+        #{goodsType,jdbcType=INTEGER},
+      </if>
+      <if test="goodsWeight != null">
+        #{goodsWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sendUserId != null">
+        #{sendUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sendCompanyId != null">
+        #{sendCompanyId,jdbcType=BIGINT},
+      </if>
+      <if test="sendUserName != null">
+        #{sendUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="sendUserPhone != null">
+        #{sendUserPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sendProvince != null">
+        #{sendProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="sendCity != null">
+        #{sendCity,jdbcType=VARCHAR},
+      </if>
+      <if test="sendArea != null">
+        #{sendArea,jdbcType=VARCHAR},
+      </if>
+      <if test="sendDetail != null">
+        #{sendDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveUserId != null">
+        #{receiveUserId,jdbcType=BIGINT},
+      </if>
+      <if test="receiveCompanyId != null">
+        #{receiveCompanyId,jdbcType=BIGINT},
+      </if>
+      <if test="receiveUserName != null">
+        #{receiveUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveUserPhone != null">
+        #{receiveUserPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveProvince != null">
+        #{receiveProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCity != null">
+        #{receiveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveArea != null">
+        #{receiveArea,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDetail != null">
+        #{receiveDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zxkj.energy.pojo.order.OrderInfo">
+    update order_info
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="orderGmt != null">
+        order_gmt = #{orderGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arriveGmt != null">
+        arrive_gmt = #{arriveGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null">
+        goods_type = #{goodsType,jdbcType=INTEGER},
+      </if>
+      <if test="goodsWeight != null">
+        goods_weight = #{goodsWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sendUserId != null">
+        send_user_id = #{sendUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sendCompanyId != null">
+        send_company_id = #{sendCompanyId,jdbcType=BIGINT},
+      </if>
+      <if test="sendUserName != null">
+        send_user_name = #{sendUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="sendUserPhone != null">
+        send_user_phone = #{sendUserPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sendProvince != null">
+        send_province = #{sendProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="sendCity != null">
+        send_city = #{sendCity,jdbcType=VARCHAR},
+      </if>
+      <if test="sendArea != null">
+        send_area = #{sendArea,jdbcType=VARCHAR},
+      </if>
+      <if test="sendDetail != null">
+        send_detail = #{sendDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveUserId != null">
+        receive_user_id = #{receiveUserId,jdbcType=BIGINT},
+      </if>
+      <if test="receiveCompanyId != null">
+        receive_company_id = #{receiveCompanyId,jdbcType=BIGINT},
+      </if>
+      <if test="receiveUserName != null">
+        receive_user_name = #{receiveUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveUserPhone != null">
+        receive_user_phone = #{receiveUserPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveProvince != null">
+        receive_province = #{receiveProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCity != null">
+        receive_city = #{receiveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveArea != null">
+        receive_area = #{receiveArea,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDetail != null">
+        receive_detail = #{receiveDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        writer_name = #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zxkj.energy.pojo.order.OrderInfo">
+    update order_info
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=BIGINT},
+      order_gmt = #{orderGmt,jdbcType=TIMESTAMP},
+      arrive_gmt = #{arriveGmt,jdbcType=TIMESTAMP},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_type = #{goodsType,jdbcType=INTEGER},
+      goods_weight = #{goodsWeight,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      send_user_id = #{sendUserId,jdbcType=BIGINT},
+      send_company_id = #{sendCompanyId,jdbcType=BIGINT},
+      send_user_name = #{sendUserName,jdbcType=VARCHAR},
+      send_user_phone = #{sendUserPhone,jdbcType=VARCHAR},
+      send_province = #{sendProvince,jdbcType=VARCHAR},
+      send_city = #{sendCity,jdbcType=VARCHAR},
+      send_area = #{sendArea,jdbcType=VARCHAR},
+      send_detail = #{sendDetail,jdbcType=VARCHAR},
+      receive_user_id = #{receiveUserId,jdbcType=BIGINT},
+      receive_company_id = #{receiveCompanyId,jdbcType=BIGINT},
+      receive_user_name = #{receiveUserName,jdbcType=VARCHAR},
+      receive_user_phone = #{receiveUserPhone,jdbcType=VARCHAR},
+      receive_province = #{receiveProvince,jdbcType=VARCHAR},
+      receive_city = #{receiveCity,jdbcType=VARCHAR},
+      receive_area = #{receiveArea,jdbcType=VARCHAR},
+      receive_detail = #{receiveDetail,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      writer_name = #{writerName,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="orderNo != null">
+         and order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="companyId != null">
+         and company_id = #{companyId,jdbcType=BIGINT}
+      </if>
+      <if test="orderGmt != null">
+         and order_gmt = #{orderGmt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="arriveGmt != null">
+         and arrive_gmt = #{arriveGmt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="goodsName != null">
+         and goods_name = #{goodsName,jdbcType=VARCHAR}
+      </if>
+      <if test="goodsType != null">
+         and goods_type = #{goodsType,jdbcType=INTEGER}
+      </if>
+      <if test="goodsWeight != null">
+         and goods_weight = #{goodsWeight,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStatus != null">
+         and order_status = #{orderStatus,jdbcType=INTEGER}
+      </if>
+      <if test="sendUserId != null">
+         and send_user_id = #{sendUserId,jdbcType=BIGINT}
+      </if>
+      <if test="sendCompanyId != null">
+         and send_company_id = #{sendCompanyId,jdbcType=BIGINT}
+      </if>
+      <if test="sendUserName != null">
+         and send_user_name = #{sendUserName,jdbcType=VARCHAR}
+      </if>
+      <if test="sendUserPhone != null">
+         and send_user_phone = #{sendUserPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="sendProvince != null">
+         and send_province = #{sendProvince,jdbcType=VARCHAR}
+      </if>
+      <if test="sendCity != null">
+         and send_city = #{sendCity,jdbcType=VARCHAR}
+      </if>
+      <if test="sendArea != null">
+         and send_area = #{sendArea,jdbcType=VARCHAR}
+      </if>
+      <if test="sendDetail != null">
+         and send_detail = #{sendDetail,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveUserId != null">
+         and receive_user_id = #{receiveUserId,jdbcType=BIGINT}
+      </if>
+      <if test="receiveCompanyId != null">
+         and receive_company_id = #{receiveCompanyId,jdbcType=BIGINT}
+      </if>
+      <if test="receiveUserName != null">
+         and receive_user_name = #{receiveUserName,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveUserPhone != null">
+         and receive_user_phone = #{receiveUserPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveProvince != null">
+         and receive_province = #{receiveProvince,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveCity != null">
+         and receive_city = #{receiveCity,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveArea != null">
+         and receive_area = #{receiveArea,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveDetail != null">
+         and receive_detail = #{receiveDetail,jdbcType=VARCHAR}
+      </if>
+      <if test="gmtCreate != null">
+         and gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="gmtModified != null">
+         and gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      </if>
+      <if test="writerName != null">
+         and writer_name = #{writerName,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+         and is_delete = #{isDelete,jdbcType=TINYINT}
+      </if>
+      <if test="remark != null">
+         and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="list" parameterType="com.zxkj.energy.pojo.order.OrderInfo" resultMap="BaseResultMap">
+    select * from order_info
+    <include refid="sql_where" />
+  </select>
+  <select id="find" parameterType="com.zxkj.energy.pojo.order.OrderInfo" resultMap="BaseResultMap">
+    select * from order_info
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteById" parameterType="java.lang.Long">
+     update order_info set is_delete = true where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insertBatch" parameterType="java.util.List">
+     insert into order_info ( 
+    <include refid="Base_Column_List" />
+     ) VALUES 
+    <foreach collection="insertList" index="index" item="item" separator=",">
+      (
+      #{item.id},#{item.orderNo},#{item.companyId},#{item.orderGmt},#{item.arriveGmt},#{item.goodsName},#{item.goodsType},#{item.goodsWeight},#{item.orderStatus},#{item.sendUserId},#{item.sendCompanyId},#{item.sendUserName},#{item.sendUserPhone},#{item.sendProvince},#{item.sendCity},#{item.sendArea},#{item.sendDetail},#{item.receiveUserId},#{item.receiveCompanyId},#{item.receiveUserName},#{item.receiveUserPhone},#{item.receiveProvince},#{item.receiveCity},#{item.receiveArea},#{item.receiveDetail},#{item.gmtCreate},#{item.gmtModified},#{item.writerName},#{item.isDelete},#{item.remark}
+      )
+    </foreach>
+  </insert>
+  <update id="updateBatch" parameterType="java.util.List">
+    <foreach close="" collection="updateList" index="index" item="item" open="" separator=";">
+       update order_info
+      <set>
+        order_no = #{item.orderNo},company_id = #{item.companyId},order_gmt = #{item.orderGmt},arrive_gmt = #{item.arriveGmt},goods_name = #{item.goodsName},goods_type = #{item.goodsType},goods_weight = #{item.goodsWeight},order_status = #{item.orderStatus},send_user_id = #{item.sendUserId},send_company_id = #{item.sendCompanyId},send_user_name = #{item.sendUserName},send_user_phone = #{item.sendUserPhone},send_province = #{item.sendProvince},send_city = #{item.sendCity},send_area = #{item.sendArea},send_detail = #{item.sendDetail},receive_user_id = #{item.receiveUserId},receive_company_id = #{item.receiveCompanyId},receive_user_name = #{item.receiveUserName},receive_user_phone = #{item.receiveUserPhone},receive_province = #{item.receiveProvince},receive_city = #{item.receiveCity},receive_area = #{item.receiveArea},receive_detail = #{item.receiveDetail},gmt_create = #{item.gmtCreate},gmt_modified = #{item.gmtModified},writer_name = #{item.writerName},is_delete = #{item.isDelete},remark = #{item.remark}
+      </set>
+      where id = #{item.id}
+    </foreach>
+  </update>
+</mapper>

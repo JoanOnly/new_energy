@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxkj.energy.mapper.car.CarInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zxkj.energy.pojo.car.CarInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="car_number" jdbcType="VARCHAR" property="carNumber" />
+    <result column="car_owner_name" jdbcType="VARCHAR" property="carOwnerName" />
+    <result column="car_owner_phone" jdbcType="VARCHAR" property="carOwnerPhone" />
+    <result column="car_plate_color" jdbcType="VARCHAR" property="carPlateColor" />
+    <result column="car_body_color" jdbcType="VARCHAR" property="carBodyColor" />
+    <result column="car_type_id" jdbcType="BIGINT" property="carTypeId" />
+    <result column="car_operate_status" jdbcType="INTEGER" property="carOperateStatus" />
+    <result column="car_id_card" jdbcType="VARCHAR" property="carIdCard" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="writer_name" jdbcType="VARCHAR" property="writerName" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, company_id, user_id, car_number, car_owner_name, car_owner_phone, car_plate_color, 
+    car_body_color, car_type_id, car_operate_status, car_id_card, gmt_create, gmt_modified, 
+    writer_name, is_delete, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.zxkj.energy.pojo.car.CarInfo">
+    insert into car_info (id, company_id, user_id, 
+      car_number, car_owner_name, car_owner_phone, 
+      car_plate_color, car_body_color, car_type_id, 
+      car_operate_status, car_id_card, gmt_create, 
+      gmt_modified, writer_name, is_delete, 
+      remark)
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{carNumber,jdbcType=VARCHAR}, #{carOwnerName,jdbcType=VARCHAR}, #{carOwnerPhone,jdbcType=VARCHAR}, 
+      #{carPlateColor,jdbcType=VARCHAR}, #{carBodyColor,jdbcType=VARCHAR}, #{carTypeId,jdbcType=BIGINT}, 
+      #{carOperateStatus,jdbcType=INTEGER}, #{carIdCard,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{writerName,jdbcType=VARCHAR}, #{isDelete,jdbcType=TINYINT}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zxkj.energy.pojo.car.CarInfo">
+    insert into car_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="carNumber != null">
+        car_number,
+      </if>
+      <if test="carOwnerName != null">
+        car_owner_name,
+      </if>
+      <if test="carOwnerPhone != null">
+        car_owner_phone,
+      </if>
+      <if test="carPlateColor != null">
+        car_plate_color,
+      </if>
+      <if test="carBodyColor != null">
+        car_body_color,
+      </if>
+      <if test="carTypeId != null">
+        car_type_id,
+      </if>
+      <if test="carOperateStatus != null">
+        car_operate_status,
+      </if>
+      <if test="carIdCard != null">
+        car_id_card,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="writerName != null">
+        writer_name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="carNumber != null">
+        #{carNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="carOwnerName != null">
+        #{carOwnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="carOwnerPhone != null">
+        #{carOwnerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carPlateColor != null">
+        #{carPlateColor,jdbcType=VARCHAR},
+      </if>
+      <if test="carBodyColor != null">
+        #{carBodyColor,jdbcType=VARCHAR},
+      </if>
+      <if test="carTypeId != null">
+        #{carTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="carOperateStatus != null">
+        #{carOperateStatus,jdbcType=INTEGER},
+      </if>
+      <if test="carIdCard != null">
+        #{carIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zxkj.energy.pojo.car.CarInfo">
+    update car_info
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="carNumber != null">
+        car_number = #{carNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="carOwnerName != null">
+        car_owner_name = #{carOwnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="carOwnerPhone != null">
+        car_owner_phone = #{carOwnerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carPlateColor != null">
+        car_plate_color = #{carPlateColor,jdbcType=VARCHAR},
+      </if>
+      <if test="carBodyColor != null">
+        car_body_color = #{carBodyColor,jdbcType=VARCHAR},
+      </if>
+      <if test="carTypeId != null">
+        car_type_id = #{carTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="carOperateStatus != null">
+        car_operate_status = #{carOperateStatus,jdbcType=INTEGER},
+      </if>
+      <if test="carIdCard != null">
+        car_id_card = #{carIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        writer_name = #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zxkj.energy.pojo.car.CarInfo">
+    update car_info
+    set company_id = #{companyId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      car_number = #{carNumber,jdbcType=VARCHAR},
+      car_owner_name = #{carOwnerName,jdbcType=VARCHAR},
+      car_owner_phone = #{carOwnerPhone,jdbcType=VARCHAR},
+      car_plate_color = #{carPlateColor,jdbcType=VARCHAR},
+      car_body_color = #{carBodyColor,jdbcType=VARCHAR},
+      car_type_id = #{carTypeId,jdbcType=BIGINT},
+      car_operate_status = #{carOperateStatus,jdbcType=INTEGER},
+      car_id_card = #{carIdCard,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      writer_name = #{writerName,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="companyId != null">
+         and company_id = #{companyId,jdbcType=BIGINT}
+      </if>
+      <if test="userId != null">
+         and user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="carNumber != null">
+         and car_number = #{carNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="carOwnerName != null">
+         and car_owner_name = #{carOwnerName,jdbcType=VARCHAR}
+      </if>
+      <if test="carOwnerPhone != null">
+         and car_owner_phone = #{carOwnerPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="carPlateColor != null">
+         and car_plate_color = #{carPlateColor,jdbcType=VARCHAR}
+      </if>
+      <if test="carBodyColor != null">
+         and car_body_color = #{carBodyColor,jdbcType=VARCHAR}
+      </if>
+      <if test="carTypeId != null">
+         and car_type_id = #{carTypeId,jdbcType=BIGINT}
+      </if>
+      <if test="carOperateStatus != null">
+         and car_operate_status = #{carOperateStatus,jdbcType=INTEGER}
+      </if>
+      <if test="carIdCard != null">
+         and car_id_card = #{carIdCard,jdbcType=VARCHAR}
+      </if>
+      <if test="gmtCreate != null">
+         and gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="gmtModified != null">
+         and gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      </if>
+      <if test="writerName != null">
+         and writer_name = #{writerName,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+         and is_delete = #{isDelete,jdbcType=TINYINT}
+      </if>
+      <if test="remark != null">
+         and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="list" parameterType="com.zxkj.energy.pojo.car.CarInfo" resultMap="BaseResultMap">
+    select * from car_info
+    <include refid="sql_where" />
+  </select>
+  <select id="find" parameterType="com.zxkj.energy.pojo.car.CarInfo" resultMap="BaseResultMap">
+    select * from car_info
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteById" parameterType="java.lang.Long">
+     update car_info set is_delete = true where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insertBatch" parameterType="java.util.List">
+     insert into car_info ( 
+    <include refid="Base_Column_List" />
+     ) VALUES 
+    <foreach collection="insertList" index="index" item="item" separator=",">
+      (
+      #{item.id},#{item.companyId},#{item.userId},#{item.carNumber},#{item.carOwnerName},#{item.carOwnerPhone},#{item.carPlateColor},#{item.carBodyColor},#{item.carTypeId},#{item.carOperateStatus},#{item.carIdCard},#{item.gmtCreate},#{item.gmtModified},#{item.writerName},#{item.isDelete},#{item.remark}
+      )
+    </foreach>
+  </insert>
+  <update id="updateBatch" parameterType="java.util.List">
+    <foreach close="" collection="updateList" index="index" item="item" open="" separator=";">
+       update car_info
+      <set>
+        company_id = #{item.companyId},user_id = #{item.userId},car_number = #{item.carNumber},car_owner_name = #{item.carOwnerName},car_owner_phone = #{item.carOwnerPhone},car_plate_color = #{item.carPlateColor},car_body_color = #{item.carBodyColor},car_type_id = #{item.carTypeId},car_operate_status = #{item.carOperateStatus},car_id_card = #{item.carIdCard},gmt_create = #{item.gmtCreate},gmt_modified = #{item.gmtModified},writer_name = #{item.writerName},is_delete = #{item.isDelete},remark = #{item.remark}
+      </set>
+      where id = #{item.id}
+    </foreach>
+  </update>
+</mapper>

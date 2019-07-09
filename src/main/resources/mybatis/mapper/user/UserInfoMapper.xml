@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxkj.energy.mapper.user.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zxkj.energy.pojo.user.UserInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="account_doc" jdbcType="VARCHAR" property="accountDoc" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="user_sex" jdbcType="VARCHAR" property="userSex" />
+    <result column="user_id_card" jdbcType="VARCHAR" property="userIdCard" />
+    <result column="user_birth_gmt" jdbcType="TIMESTAMP" property="userBirthGmt" />
+    <result column="user_status" jdbcType="INTEGER" property="userStatus" />
+    <result column="user_type" jdbcType="INTEGER" property="userType" />
+    <result column="is_driver" jdbcType="TINYINT" property="isDriver" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="writer_name" jdbcType="VARCHAR" property="writerName" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, company_id, account_doc, user_name, user_phone, user_sex, user_id_card, user_birth_gmt, 
+    user_status, user_type, is_driver, gmt_create, gmt_modified, writer_name, is_delete, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.zxkj.energy.pojo.user.UserInfo">
+    insert into user_info (id, company_id, account_doc, 
+      user_name, user_phone, user_sex, 
+      user_id_card, user_birth_gmt, user_status, 
+      user_type, is_driver, gmt_create, 
+      gmt_modified, writer_name, is_delete, 
+      remark)
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{accountDoc,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, #{userSex,jdbcType=VARCHAR}, 
+      #{userIdCard,jdbcType=VARCHAR}, #{userBirthGmt,jdbcType=TIMESTAMP}, #{userStatus,jdbcType=INTEGER}, 
+      #{userType,jdbcType=INTEGER}, #{isDriver,jdbcType=TINYINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{writerName,jdbcType=VARCHAR}, #{isDelete,jdbcType=TINYINT}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zxkj.energy.pojo.user.UserInfo">
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="accountDoc != null">
+        account_doc,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPhone != null">
+        user_phone,
+      </if>
+      <if test="userSex != null">
+        user_sex,
+      </if>
+      <if test="userIdCard != null">
+        user_id_card,
+      </if>
+      <if test="userBirthGmt != null">
+        user_birth_gmt,
+      </if>
+      <if test="userStatus != null">
+        user_status,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="isDriver != null">
+        is_driver,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="writerName != null">
+        writer_name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="accountDoc != null">
+        #{accountDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userIdCard != null">
+        #{userIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="userBirthGmt != null">
+        #{userBirthGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userStatus != null">
+        #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="isDriver != null">
+        #{isDriver,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zxkj.energy.pojo.user.UserInfo">
+    update user_info
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="accountDoc != null">
+        account_doc = #{accountDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        user_sex = #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userIdCard != null">
+        user_id_card = #{userIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="userBirthGmt != null">
+        user_birth_gmt = #{userBirthGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userStatus != null">
+        user_status = #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="isDriver != null">
+        is_driver = #{isDriver,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        writer_name = #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zxkj.energy.pojo.user.UserInfo">
+    update user_info
+    set company_id = #{companyId,jdbcType=BIGINT},
+      account_doc = #{accountDoc,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=VARCHAR},
+      user_id_card = #{userIdCard,jdbcType=VARCHAR},
+      user_birth_gmt = #{userBirthGmt,jdbcType=TIMESTAMP},
+      user_status = #{userStatus,jdbcType=INTEGER},
+      user_type = #{userType,jdbcType=INTEGER},
+      is_driver = #{isDriver,jdbcType=TINYINT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      writer_name = #{writerName,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="companyId != null">
+         and company_id = #{companyId,jdbcType=BIGINT}
+      </if>
+      <if test="accountDoc != null">
+         and account_doc = #{accountDoc,jdbcType=VARCHAR}
+      </if>
+      <if test="userName != null">
+         and user_name = #{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="userPhone != null">
+         and user_phone = #{userPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="userSex != null">
+         and user_sex = #{userSex,jdbcType=VARCHAR}
+      </if>
+      <if test="userIdCard != null">
+         and user_id_card = #{userIdCard,jdbcType=VARCHAR}
+      </if>
+      <if test="userBirthGmt != null">
+         and user_birth_gmt = #{userBirthGmt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="userStatus != null">
+         and user_status = #{userStatus,jdbcType=INTEGER}
+      </if>
+      <if test="userType != null">
+         and user_type = #{userType,jdbcType=INTEGER}
+      </if>
+      <if test="isDriver != null">
+         and is_driver = #{isDriver,jdbcType=TINYINT}
+      </if>
+      <if test="gmtCreate != null">
+         and gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="gmtModified != null">
+         and gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      </if>
+      <if test="writerName != null">
+         and writer_name = #{writerName,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+         and is_delete = #{isDelete,jdbcType=TINYINT}
+      </if>
+      <if test="remark != null">
+         and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="list" parameterType="com.zxkj.energy.pojo.user.UserInfo" resultMap="BaseResultMap">
+    select * from user_info
+    <include refid="sql_where" />
+  </select>
+  <select id="find" parameterType="com.zxkj.energy.pojo.user.UserInfo" resultMap="BaseResultMap">
+    select * from user_info
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteById" parameterType="java.lang.Long">
+     update user_info set is_delete = true where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insertBatch" parameterType="java.util.List">
+     insert into user_info ( 
+    <include refid="Base_Column_List" />
+     ) VALUES 
+    <foreach collection="insertList" index="index" item="item" separator=",">
+      (
+      #{item.id},#{item.companyId},#{item.accountDoc},#{item.userName},#{item.userPhone},#{item.userSex},#{item.userIdCard},#{item.userBirthGmt},#{item.userStatus},#{item.userType},#{item.isDriver},#{item.gmtCreate},#{item.gmtModified},#{item.writerName},#{item.isDelete},#{item.remark}
+      )
+    </foreach>
+  </insert>
+  <update id="updateBatch" parameterType="java.util.List">
+    <foreach close="" collection="updateList" index="index" item="item" open="" separator=";">
+       update user_info
+      <set>
+        company_id = #{item.companyId},account_doc = #{item.accountDoc},user_name = #{item.userName},user_phone = #{item.userPhone},user_sex = #{item.userSex},user_id_card = #{item.userIdCard},user_birth_gmt = #{item.userBirthGmt},user_status = #{item.userStatus},user_type = #{item.userType},is_driver = #{item.isDriver},gmt_create = #{item.gmtCreate},gmt_modified = #{item.gmtModified},writer_name = #{item.writerName},is_delete = #{item.isDelete},remark = #{item.remark}
+      </set>
+      where id = #{item.id}
+    </foreach>
+  </update>
+</mapper>

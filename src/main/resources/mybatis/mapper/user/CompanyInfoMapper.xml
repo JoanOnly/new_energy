@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxkj.energy.mapper.user.CompanyInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zxkj.energy.pojo.user.CompanyInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_abbr" jdbcType="VARCHAR" property="companyAbbr" />
+    <result column="company_id_card" jdbcType="VARCHAR" property="companyIdCard" />
+    <result column="company_phone" jdbcType="VARCHAR" property="companyPhone" />
+    <result column="company_fax" jdbcType="VARCHAR" property="companyFax" />
+    <result column="company_addr" jdbcType="VARCHAR" property="companyAddr" />
+    <result column="doc_prefix" jdbcType="VARCHAR" property="docPrefix" />
+    <result column="is_shipper" jdbcType="TINYINT" property="isShipper" />
+    <result column="is_transport" jdbcType="TINYINT" property="isTransport" />
+    <result column="is_logistics" jdbcType="TINYINT" property="isLogistics" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="writer_name" jdbcType="VARCHAR" property="writerName" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, parent_id, company_name, company_abbr, company_id_card, company_phone, company_fax, 
+    company_addr, doc_prefix, is_shipper, is_transport, is_logistics, gmt_create, gmt_modified, 
+    writer_name, is_delete, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from company_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.zxkj.energy.pojo.user.CompanyInfo">
+    insert into company_info (id, parent_id, company_name, 
+      company_abbr, company_id_card, company_phone, 
+      company_fax, company_addr, doc_prefix, 
+      is_shipper, is_transport, is_logistics, 
+      gmt_create, gmt_modified, writer_name, 
+      is_delete, remark)
+    values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, 
+      #{companyAbbr,jdbcType=VARCHAR}, #{companyIdCard,jdbcType=VARCHAR}, #{companyPhone,jdbcType=VARCHAR}, 
+      #{companyFax,jdbcType=VARCHAR}, #{companyAddr,jdbcType=VARCHAR}, #{docPrefix,jdbcType=VARCHAR}, 
+      #{isShipper,jdbcType=TINYINT}, #{isTransport,jdbcType=TINYINT}, #{isLogistics,jdbcType=TINYINT}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{writerName,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zxkj.energy.pojo.user.CompanyInfo">
+    insert into company_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="companyAbbr != null">
+        company_abbr,
+      </if>
+      <if test="companyIdCard != null">
+        company_id_card,
+      </if>
+      <if test="companyPhone != null">
+        company_phone,
+      </if>
+      <if test="companyFax != null">
+        company_fax,
+      </if>
+      <if test="companyAddr != null">
+        company_addr,
+      </if>
+      <if test="docPrefix != null">
+        doc_prefix,
+      </if>
+      <if test="isShipper != null">
+        is_shipper,
+      </if>
+      <if test="isTransport != null">
+        is_transport,
+      </if>
+      <if test="isLogistics != null">
+        is_logistics,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="writerName != null">
+        writer_name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAbbr != null">
+        #{companyAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="companyIdCard != null">
+        #{companyIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFax != null">
+        #{companyFax,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddr != null">
+        #{companyAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="docPrefix != null">
+        #{docPrefix,jdbcType=VARCHAR},
+      </if>
+      <if test="isShipper != null">
+        #{isShipper,jdbcType=TINYINT},
+      </if>
+      <if test="isTransport != null">
+        #{isTransport,jdbcType=TINYINT},
+      </if>
+      <if test="isLogistics != null">
+        #{isLogistics,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zxkj.energy.pojo.user.CompanyInfo">
+    update company_info
+    <set>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAbbr != null">
+        company_abbr = #{companyAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="companyIdCard != null">
+        company_id_card = #{companyIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        company_phone = #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFax != null">
+        company_fax = #{companyFax,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddr != null">
+        company_addr = #{companyAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="docPrefix != null">
+        doc_prefix = #{docPrefix,jdbcType=VARCHAR},
+      </if>
+      <if test="isShipper != null">
+        is_shipper = #{isShipper,jdbcType=TINYINT},
+      </if>
+      <if test="isTransport != null">
+        is_transport = #{isTransport,jdbcType=TINYINT},
+      </if>
+      <if test="isLogistics != null">
+        is_logistics = #{isLogistics,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        writer_name = #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zxkj.energy.pojo.user.CompanyInfo">
+    update company_info
+    set parent_id = #{parentId,jdbcType=BIGINT},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      company_abbr = #{companyAbbr,jdbcType=VARCHAR},
+      company_id_card = #{companyIdCard,jdbcType=VARCHAR},
+      company_phone = #{companyPhone,jdbcType=VARCHAR},
+      company_fax = #{companyFax,jdbcType=VARCHAR},
+      company_addr = #{companyAddr,jdbcType=VARCHAR},
+      doc_prefix = #{docPrefix,jdbcType=VARCHAR},
+      is_shipper = #{isShipper,jdbcType=TINYINT},
+      is_transport = #{isTransport,jdbcType=TINYINT},
+      is_logistics = #{isLogistics,jdbcType=TINYINT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      writer_name = #{writerName,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="parentId != null">
+         and parent_id = #{parentId,jdbcType=BIGINT}
+      </if>
+      <if test="companyName != null">
+         and company_name = #{companyName,jdbcType=VARCHAR}
+      </if>
+      <if test="companyAbbr != null">
+         and company_abbr = #{companyAbbr,jdbcType=VARCHAR}
+      </if>
+      <if test="companyIdCard != null">
+         and company_id_card = #{companyIdCard,jdbcType=VARCHAR}
+      </if>
+      <if test="companyPhone != null">
+         and company_phone = #{companyPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="companyFax != null">
+         and company_fax = #{companyFax,jdbcType=VARCHAR}
+      </if>
+      <if test="companyAddr != null">
+         and company_addr = #{companyAddr,jdbcType=VARCHAR}
+      </if>
+      <if test="docPrefix != null">
+         and doc_prefix = #{docPrefix,jdbcType=VARCHAR}
+      </if>
+      <if test="isShipper != null">
+         and is_shipper = #{isShipper,jdbcType=TINYINT}
+      </if>
+      <if test="isTransport != null">
+         and is_transport = #{isTransport,jdbcType=TINYINT}
+      </if>
+      <if test="isLogistics != null">
+         and is_logistics = #{isLogistics,jdbcType=TINYINT}
+      </if>
+      <if test="gmtCreate != null">
+         and gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="gmtModified != null">
+         and gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      </if>
+      <if test="writerName != null">
+         and writer_name = #{writerName,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+         and is_delete = #{isDelete,jdbcType=TINYINT}
+      </if>
+      <if test="remark != null">
+         and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="list" parameterType="com.zxkj.energy.pojo.user.CompanyInfo" resultMap="BaseResultMap">
+    select * from company_info
+    <include refid="sql_where" />
+  </select>
+  <select id="find" parameterType="com.zxkj.energy.pojo.user.CompanyInfo" resultMap="BaseResultMap">
+    select * from company_info
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteById" parameterType="java.lang.Long">
+     update company_info set is_delete = true where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insertBatch" parameterType="java.util.List">
+     insert into company_info ( 
+    <include refid="Base_Column_List" />
+     ) VALUES 
+    <foreach collection="insertList" index="index" item="item" separator=",">
+      (
+      #{item.id},#{item.parentId},#{item.companyName},#{item.companyAbbr},#{item.companyIdCard},#{item.companyPhone},#{item.companyFax},#{item.companyAddr},#{item.docPrefix},#{item.isShipper},#{item.isTransport},#{item.isLogistics},#{item.gmtCreate},#{item.gmtModified},#{item.writerName},#{item.isDelete},#{item.remark}
+      )
+    </foreach>
+  </insert>
+  <update id="updateBatch" parameterType="java.util.List">
+    <foreach close="" collection="updateList" index="index" item="item" open="" separator=";">
+       update company_info
+      <set>
+        parent_id = #{item.parentId},company_name = #{item.companyName},company_abbr = #{item.companyAbbr},company_id_card = #{item.companyIdCard},company_phone = #{item.companyPhone},company_fax = #{item.companyFax},company_addr = #{item.companyAddr},doc_prefix = #{item.docPrefix},is_shipper = #{item.isShipper},is_transport = #{item.isTransport},is_logistics = #{item.isLogistics},gmt_create = #{item.gmtCreate},gmt_modified = #{item.gmtModified},writer_name = #{item.writerName},is_delete = #{item.isDelete},remark = #{item.remark}
+      </set>
+      where id = #{item.id}
+    </foreach>
+  </update>
+</mapper>

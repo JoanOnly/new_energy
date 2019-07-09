@@ -1,0 +1,54 @@
+server:
+  port: 8086
+
+spring:
+  profiles:
+    active: dev
+    include: queue
+
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      druid:
+        initialSize: 5
+        minIdle: 5
+        maxActive: 20
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: SELECT 1 FROM DUAL
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        filters: stat,wall,Slf4j
+        filter:
+          stat:
+            log-slow-sql: true
+        stat-view-servlet:
+           login-username: admin
+           login-password: 123456
+           reset-enable: false
+           url-pattern: /druid/*
+
+  redis:
+      port: 6379
+      database: 1
+      jedis:
+        pool:
+          max-idle: 100
+          max-active: 100
+          max-wait: 1000
+
+mybatis:
+  type-aliases-package: com.zxkj.energy.mapper
+  mapper-locations: classpath:mybatis/mapper/*/*.xml
+
+custom:
+  webName: 新能源web后台
+  webDescription: 牢固树立创新、协调、绿色、开放、共享发展理念，为经济社会发展提供安全、高效、绿色的物流运输保障。

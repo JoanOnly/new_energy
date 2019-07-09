@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxkj.energy.mapper.user.AddressInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zxkj.energy.pojo.user.AddressInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="addr_province" jdbcType="VARCHAR" property="addrProvince" />
+    <result column="addr_city" jdbcType="VARCHAR" property="addrCity" />
+    <result column="addr_area" jdbcType="VARCHAR" property="addrArea" />
+    <result column="addr_detail" jdbcType="VARCHAR" property="addrDetail" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="is_default" jdbcType="TINYINT" property="isDefault" />
+    <result column="is_default_two" jdbcType="TINYINT" property="isDefaultTwo" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="writer_name" jdbcType="VARCHAR" property="writerName" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, company_id, user_id, addr_province, addr_city, addr_area, addr_detail, user_name, 
+    user_phone, is_default, is_default_two, gmt_create, gmt_modified, writer_name, is_delete, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from address_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.zxkj.energy.pojo.user.AddressInfo">
+    insert into address_info (id, company_id, user_id, 
+      addr_province, addr_city, addr_area, 
+      addr_detail, user_name, user_phone, 
+      is_default, is_default_two, gmt_create, 
+      gmt_modified, writer_name, is_delete, 
+      remark)
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{addrProvince,jdbcType=VARCHAR}, #{addrCity,jdbcType=VARCHAR}, #{addrArea,jdbcType=VARCHAR}, 
+      #{addrDetail,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, 
+      #{isDefault,jdbcType=TINYINT}, #{isDefaultTwo,jdbcType=TINYINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{writerName,jdbcType=VARCHAR}, #{isDelete,jdbcType=TINYINT}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zxkj.energy.pojo.user.AddressInfo">
+    insert into address_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="addrProvince != null">
+        addr_province,
+      </if>
+      <if test="addrCity != null">
+        addr_city,
+      </if>
+      <if test="addrArea != null">
+        addr_area,
+      </if>
+      <if test="addrDetail != null">
+        addr_detail,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPhone != null">
+        user_phone,
+      </if>
+      <if test="isDefault != null">
+        is_default,
+      </if>
+      <if test="isDefaultTwo != null">
+        is_default_two,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="writerName != null">
+        writer_name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="addrProvince != null">
+        #{addrProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="addrCity != null">
+        #{addrCity,jdbcType=VARCHAR},
+      </if>
+      <if test="addrArea != null">
+        #{addrArea,jdbcType=VARCHAR},
+      </if>
+      <if test="addrDetail != null">
+        #{addrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        #{isDefault,jdbcType=TINYINT},
+      </if>
+      <if test="isDefaultTwo != null">
+        #{isDefaultTwo,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zxkj.energy.pojo.user.AddressInfo">
+    update address_info
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="addrProvince != null">
+        addr_province = #{addrProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="addrCity != null">
+        addr_city = #{addrCity,jdbcType=VARCHAR},
+      </if>
+      <if test="addrArea != null">
+        addr_area = #{addrArea,jdbcType=VARCHAR},
+      </if>
+      <if test="addrDetail != null">
+        addr_detail = #{addrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        is_default = #{isDefault,jdbcType=TINYINT},
+      </if>
+      <if test="isDefaultTwo != null">
+        is_default_two = #{isDefaultTwo,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        writer_name = #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zxkj.energy.pojo.user.AddressInfo">
+    update address_info
+    set company_id = #{companyId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      addr_province = #{addrProvince,jdbcType=VARCHAR},
+      addr_city = #{addrCity,jdbcType=VARCHAR},
+      addr_area = #{addrArea,jdbcType=VARCHAR},
+      addr_detail = #{addrDetail,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
+      is_default = #{isDefault,jdbcType=TINYINT},
+      is_default_two = #{isDefaultTwo,jdbcType=TINYINT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      writer_name = #{writerName,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="companyId != null">
+         and company_id = #{companyId,jdbcType=BIGINT}
+      </if>
+      <if test="userId != null">
+         and user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="addrProvince != null">
+         and addr_province = #{addrProvince,jdbcType=VARCHAR}
+      </if>
+      <if test="addrCity != null">
+         and addr_city = #{addrCity,jdbcType=VARCHAR}
+      </if>
+      <if test="addrArea != null">
+         and addr_area = #{addrArea,jdbcType=VARCHAR}
+      </if>
+      <if test="addrDetail != null">
+         and addr_detail = #{addrDetail,jdbcType=VARCHAR}
+      </if>
+      <if test="userName != null">
+         and user_name = #{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="userPhone != null">
+         and user_phone = #{userPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="isDefault != null">
+         and is_default = #{isDefault,jdbcType=TINYINT}
+      </if>
+      <if test="isDefaultTwo != null">
+         and is_default_two = #{isDefaultTwo,jdbcType=TINYINT}
+      </if>
+      <if test="gmtCreate != null">
+         and gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="gmtModified != null">
+         and gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      </if>
+      <if test="writerName != null">
+         and writer_name = #{writerName,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+         and is_delete = #{isDelete,jdbcType=TINYINT}
+      </if>
+      <if test="remark != null">
+         and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="list" parameterType="com.zxkj.energy.pojo.user.AddressInfo" resultMap="BaseResultMap">
+    select * from address_info
+    <include refid="sql_where" />
+  </select>
+  <select id="find" parameterType="com.zxkj.energy.pojo.user.AddressInfo" resultMap="BaseResultMap">
+    select * from address_info
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteById" parameterType="java.lang.Long">
+     update address_info set is_delete = true where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insertBatch" parameterType="java.util.List">
+     insert into address_info ( 
+    <include refid="Base_Column_List" />
+     ) VALUES 
+    <foreach collection="insertList" index="index" item="item" separator=",">
+      (
+      #{item.id},#{item.companyId},#{item.userId},#{item.addrProvince},#{item.addrCity},#{item.addrArea},#{item.addrDetail},#{item.userName},#{item.userPhone},#{item.isDefault},#{item.isDefaultTwo},#{item.gmtCreate},#{item.gmtModified},#{item.writerName},#{item.isDelete},#{item.remark}
+      )
+    </foreach>
+  </insert>
+  <update id="updateBatch" parameterType="java.util.List">
+    <foreach close="" collection="updateList" index="index" item="item" open="" separator=";">
+       update address_info
+      <set>
+        company_id = #{item.companyId},user_id = #{item.userId},addr_province = #{item.addrProvince},addr_city = #{item.addrCity},addr_area = #{item.addrArea},addr_detail = #{item.addrDetail},user_name = #{item.userName},user_phone = #{item.userPhone},is_default = #{item.isDefault},is_default_two = #{item.isDefaultTwo},gmt_create = #{item.gmtCreate},gmt_modified = #{item.gmtModified},writer_name = #{item.writerName},is_delete = #{item.isDelete},remark = #{item.remark}
+      </set>
+      where id = #{item.id}
+    </foreach>
+  </update>
+</mapper>

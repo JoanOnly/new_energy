@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxkj.energy.mapper.order.OrderBackCashMapper">
+  <resultMap id="BaseResultMap" type="com.zxkj.energy.pojo.order.OrderBackCash">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="back_serial_no" jdbcType="VARCHAR" property="backSerialNo" />
+    <result column="back_user_id" jdbcType="BIGINT" property="backUserId" />
+    <result column="back_name" jdbcType="VARCHAR" property="backName" />
+    <result column="back_cost" jdbcType="DECIMAL" property="backCost" />
+    <result column="back_note" jdbcType="VARCHAR" property="backNote" />
+    <result column="back_gmt" jdbcType="TIMESTAMP" property="backGmt" />
+    <result column="deal_user_id" jdbcType="BIGINT" property="dealUserId" />
+    <result column="deal_name" jdbcType="VARCHAR" property="dealName" />
+    <result column="deal_gmt" jdbcType="TIMESTAMP" property="dealGmt" />
+    <result column="deal_note" jdbcType="VARCHAR" property="dealNote" />
+    <result column="is_back_finish" jdbcType="TINYINT" property="isBackFinish" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="writer_name" jdbcType="VARCHAR" property="writerName" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, company_id, order_id, order_no, back_serial_no, back_user_id, back_name, back_cost, 
+    back_note, back_gmt, deal_user_id, deal_name, deal_gmt, deal_note, is_back_finish, 
+    gmt_create, gmt_modified, writer_name, is_delete, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_back_cash
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.zxkj.energy.pojo.order.OrderBackCash">
+    insert into order_back_cash (id, company_id, order_id, 
+      order_no, back_serial_no, back_user_id, 
+      back_name, back_cost, back_note, 
+      back_gmt, deal_user_id, deal_name, 
+      deal_gmt, deal_note, is_back_finish, 
+      gmt_create, gmt_modified, writer_name, 
+      is_delete, remark)
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
+      #{orderNo,jdbcType=VARCHAR}, #{backSerialNo,jdbcType=VARCHAR}, #{backUserId,jdbcType=BIGINT}, 
+      #{backName,jdbcType=VARCHAR}, #{backCost,jdbcType=DECIMAL}, #{backNote,jdbcType=VARCHAR}, 
+      #{backGmt,jdbcType=TIMESTAMP}, #{dealUserId,jdbcType=BIGINT}, #{dealName,jdbcType=VARCHAR}, 
+      #{dealGmt,jdbcType=TIMESTAMP}, #{dealNote,jdbcType=VARCHAR}, #{isBackFinish,jdbcType=TINYINT}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{writerName,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zxkj.energy.pojo.order.OrderBackCash">
+    insert into order_back_cash
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="backSerialNo != null">
+        back_serial_no,
+      </if>
+      <if test="backUserId != null">
+        back_user_id,
+      </if>
+      <if test="backName != null">
+        back_name,
+      </if>
+      <if test="backCost != null">
+        back_cost,
+      </if>
+      <if test="backNote != null">
+        back_note,
+      </if>
+      <if test="backGmt != null">
+        back_gmt,
+      </if>
+      <if test="dealUserId != null">
+        deal_user_id,
+      </if>
+      <if test="dealName != null">
+        deal_name,
+      </if>
+      <if test="dealGmt != null">
+        deal_gmt,
+      </if>
+      <if test="dealNote != null">
+        deal_note,
+      </if>
+      <if test="isBackFinish != null">
+        is_back_finish,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="writerName != null">
+        writer_name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="backSerialNo != null">
+        #{backSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="backUserId != null">
+        #{backUserId,jdbcType=BIGINT},
+      </if>
+      <if test="backName != null">
+        #{backName,jdbcType=VARCHAR},
+      </if>
+      <if test="backCost != null">
+        #{backCost,jdbcType=DECIMAL},
+      </if>
+      <if test="backNote != null">
+        #{backNote,jdbcType=VARCHAR},
+      </if>
+      <if test="backGmt != null">
+        #{backGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealUserId != null">
+        #{dealUserId,jdbcType=BIGINT},
+      </if>
+      <if test="dealName != null">
+        #{dealName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealGmt != null">
+        #{dealGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealNote != null">
+        #{dealNote,jdbcType=VARCHAR},
+      </if>
+      <if test="isBackFinish != null">
+        #{isBackFinish,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zxkj.energy.pojo.order.OrderBackCash">
+    update order_back_cash
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="backSerialNo != null">
+        back_serial_no = #{backSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="backUserId != null">
+        back_user_id = #{backUserId,jdbcType=BIGINT},
+      </if>
+      <if test="backName != null">
+        back_name = #{backName,jdbcType=VARCHAR},
+      </if>
+      <if test="backCost != null">
+        back_cost = #{backCost,jdbcType=DECIMAL},
+      </if>
+      <if test="backNote != null">
+        back_note = #{backNote,jdbcType=VARCHAR},
+      </if>
+      <if test="backGmt != null">
+        back_gmt = #{backGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealUserId != null">
+        deal_user_id = #{dealUserId,jdbcType=BIGINT},
+      </if>
+      <if test="dealName != null">
+        deal_name = #{dealName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealGmt != null">
+        deal_gmt = #{dealGmt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealNote != null">
+        deal_note = #{dealNote,jdbcType=VARCHAR},
+      </if>
+      <if test="isBackFinish != null">
+        is_back_finish = #{isBackFinish,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writerName != null">
+        writer_name = #{writerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zxkj.energy.pojo.order.OrderBackCash">
+    update order_back_cash
+    set company_id = #{companyId,jdbcType=BIGINT},
+      order_id = #{orderId,jdbcType=BIGINT},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      back_serial_no = #{backSerialNo,jdbcType=VARCHAR},
+      back_user_id = #{backUserId,jdbcType=BIGINT},
+      back_name = #{backName,jdbcType=VARCHAR},
+      back_cost = #{backCost,jdbcType=DECIMAL},
+      back_note = #{backNote,jdbcType=VARCHAR},
+      back_gmt = #{backGmt,jdbcType=TIMESTAMP},
+      deal_user_id = #{dealUserId,jdbcType=BIGINT},
+      deal_name = #{dealName,jdbcType=VARCHAR},
+      deal_gmt = #{dealGmt,jdbcType=TIMESTAMP},
+      deal_note = #{dealNote,jdbcType=VARCHAR},
+      is_back_finish = #{isBackFinish,jdbcType=TINYINT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      writer_name = #{writerName,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="companyId != null">
+         and company_id = #{companyId,jdbcType=BIGINT}
+      </if>
+      <if test="orderId != null">
+         and order_id = #{orderId,jdbcType=BIGINT}
+      </if>
+      <if test="orderNo != null">
+         and order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="backSerialNo != null">
+         and back_serial_no = #{backSerialNo,jdbcType=VARCHAR}
+      </if>
+      <if test="backUserId != null">
+         and back_user_id = #{backUserId,jdbcType=BIGINT}
+      </if>
+      <if test="backName != null">
+         and back_name = #{backName,jdbcType=VARCHAR}
+      </if>
+      <if test="backCost != null">
+         and back_cost = #{backCost,jdbcType=DECIMAL}
+      </if>
+      <if test="backNote != null">
+         and back_note = #{backNote,jdbcType=VARCHAR}
+      </if>
+      <if test="backGmt != null">
+         and back_gmt = #{backGmt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="dealUserId != null">
+         and deal_user_id = #{dealUserId,jdbcType=BIGINT}
+      </if>
+      <if test="dealName != null">
+         and deal_name = #{dealName,jdbcType=VARCHAR}
+      </if>
+      <if test="dealGmt != null">
+         and deal_gmt = #{dealGmt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="dealNote != null">
+         and deal_note = #{dealNote,jdbcType=VARCHAR}
+      </if>
+      <if test="isBackFinish != null">
+         and is_back_finish = #{isBackFinish,jdbcType=TINYINT}
+      </if>
+      <if test="gmtCreate != null">
+         and gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="gmtModified != null">
+         and gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      </if>
+      <if test="writerName != null">
+         and writer_name = #{writerName,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+         and is_delete = #{isDelete,jdbcType=TINYINT}
+      </if>
+      <if test="remark != null">
+         and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="list" parameterType="com.zxkj.energy.pojo.order.OrderBackCash" resultMap="BaseResultMap">
+    select * from order_back_cash
+    <include refid="sql_where" />
+  </select>
+  <select id="find" parameterType="com.zxkj.energy.pojo.order.OrderBackCash" resultMap="BaseResultMap">
+    select * from order_back_cash
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteById" parameterType="java.lang.Long">
+     update order_back_cash set is_delete = true where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insertBatch" parameterType="java.util.List">
+     insert into order_back_cash ( 
+    <include refid="Base_Column_List" />
+     ) VALUES 
+    <foreach collection="insertList" index="index" item="item" separator=",">
+      (
+      #{item.id},#{item.companyId},#{item.orderId},#{item.orderNo},#{item.backSerialNo},#{item.backUserId},#{item.backName},#{item.backCost},#{item.backNote},#{item.backGmt},#{item.dealUserId},#{item.dealName},#{item.dealGmt},#{item.dealNote},#{item.isBackFinish},#{item.gmtCreate},#{item.gmtModified},#{item.writerName},#{item.isDelete},#{item.remark}
+      )
+    </foreach>
+  </insert>
+  <update id="updateBatch" parameterType="java.util.List">
+    <foreach close="" collection="updateList" index="index" item="item" open="" separator=";">
+       update order_back_cash
+      <set>
+        company_id = #{item.companyId},order_id = #{item.orderId},order_no = #{item.orderNo},back_serial_no = #{item.backSerialNo},back_user_id = #{item.backUserId},back_name = #{item.backName},back_cost = #{item.backCost},back_note = #{item.backNote},back_gmt = #{item.backGmt},deal_user_id = #{item.dealUserId},deal_name = #{item.dealName},deal_gmt = #{item.dealGmt},deal_note = #{item.dealNote},is_back_finish = #{item.isBackFinish},gmt_create = #{item.gmtCreate},gmt_modified = #{item.gmtModified},writer_name = #{item.writerName},is_delete = #{item.isDelete},remark = #{item.remark}
+      </set>
+      where id = #{item.id}
+    </foreach>
+  </update>
+</mapper>
